@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;1,300;1,400&family=Poppins:ital,wght@0,400;0,600;1,500&display=swap');
 
+/* Variáveis CSS */
 :root {
     --header-height: 3.5em;
 
@@ -42,99 +43,172 @@
     }
 }
 
-*{
+/* Base */
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
 input,
 textarea,
 button,
-body{
+body {
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
 }
 
-body{
+body {
     background-color: var(--body-color);
     color: var(--text-color);
 }
 
 input,
 textarea,
-button{
+button {
     outline: none;
     border: none;
 }
 
-h1,h2,h3,h4{
+h1,
+h2,
+h3,
+h4 {
     color: var(--title-color);
     font-weight: var(--font-medium);
 }
 
-ul{
+ul {
     list-style: none;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
 img,
-svg{
+svg {
     max-width: 100%;
     height: auto;
 }
 
-.container{
+/* Classes CSS reutilizáveis */
+.container {
     max-width: 1120px;
     margin-inline: 1.5rem;
 }
 
-.grid{
+.grid {
     display: grid;
     gap: 1.5rem;
 }
 
-.section{
+.section {
     padding-block: 5rem 2rem;
 }
 
 .section__title,
-.section__subtitle{
+.section__subtitle {
     text-align: center;
     color: var(--title-color);
     font-weight: var(--font-semi-bold);
 }
 
-.section__title{
+.section__title {
     font-size: var(--h1-font-size);
     margin-bottom: 1.5rem;
 }
 
-.section__subtitle{
+.section__subtitle {
     font-size: var(--small-font-size);
     margin-bottom: .25rem;
 }
 
-.section__subtitle span{
+.section__subtitle span {
     color: var(--first-color);
 }
 
-.main{
+.main {
     overflow: hidden;
 }
 
-.header{
+/* Header & Nav */
+.header {
     position: fixed;
     width: 100%;
     background-color: var(--container-color);
     top: 0;
     left: 0;
     z-index: var(--z-fixed);
+}
+
+.nav{
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo{
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+}
+
+.nav__logo span{
+    color: var(--first-color);
+}
+
+.nav_toggle,
+.nav__close{
+    display: flex;
+    font-size: 1.25rem;
+    color: var(--title-color);
+    cursor: pointer;
+}
+
+/* Navegação para dispositivos móveis */
+@media screen and (max-width: 1023px) {
+    .nav__menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        background-color: hsla(0, 0%, 10%, .3);
+        width: 75%;
+        height: 100%;
+        padding: 4.5rem 0 0 3rem;
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        transition: right .4s;
+    }
+}
+
+.nav__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+}
+
+.nav__link {
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    transition: color .4s;
+}
+
+.nav__link:hover {
+    color: var(--first-color);
+}
+
+.nav__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+/* Mostrar Menu */
+.show-menu{
+    right: 0;
 }
